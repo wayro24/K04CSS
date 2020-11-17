@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C16Table.html</title>
+
+</head>
+<body>
+    <h2>순수 HTML5 태그로 제작한 테이블1</h2>
+
+    <table border="0" cellpadding="5" cellspacing="1" bgcolor="#000000" width="200"> 
+        <tr bgcolor="#ffffff" align="center">
+            <td bgcolor="#888888" style="color:red">가</td>
+            <td>나</td>
+            <td>다</td>
+        </tr>
+        <tr bgcolor="#ffffff">
+            <td bgcolor="#888888" align="center" style="color:red">라</td>
+            <td>마</td>
+            <td>바</td>
+        </tr>
+    </table>
+
+   
+    <h2>CSS3를 적용한 테이블1</h2>
+     <!-- 
+        border-spacing : 셀과 셀사이의 간격을 조정한다.
+            cellspacing과 동일한 역할을 한다. 속성값은 2개로
+            가로간격, 세로간격을 설정한다.
+        border-collapse : 보더의 간격을 단순히 없애는게 아니라
+            아예 보더를 겹치게 배치하여 얇게 표현할때 사용한다.
+     -->
+    <style>
+        table#my_table{border:1px solid #000000; border-spacing:0px 0px;
+            border-collapse: collapse; width:200px;}
+        table#my_table td{border:1px solid #000000; padding:5px;}
+        table#my_table tr td:first-child{background-color: #888888; text-align: center; color:red;}
+        table#my_table tr:first-child {text-align: center;}
+    </style>
+    <table id="my_table">
+        <tr>
+            <td>가</td>
+            <td>나</td>
+            <td>다</td>
+        </tr>
+        <tr>
+            <td>라</td>
+            <td>마</td>
+            <td>바</td>
+        </tr>
+    </table>
+</body>
+</html>

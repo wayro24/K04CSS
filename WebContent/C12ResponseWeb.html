@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C12ResponseWeb.html</title>
+<style type="text/css">
+    /* 전체선택자를 통해 문서의 기본스타일 지정 */
+    *{margin:0; padding:0; font-family:Verdana;}
+
+    /* block 엘리먼트 자체에 대한 가운데 정렬을 위해 margin을 사용한다.
+    적용되지 않는 브라우저가 있다면 text-align을 통해 정렬한다. */
+    #AllWrap{
+        margin:0 auto; text-align: center;
+    }
+    #PartWrap{
+        width:100%;text-align:left;
+        border:1px solid blue;
+    }
+    #header{
+        border:1px solid blue; text-align:center;
+        height:100%; line-height:100px;
+    }
+
+    /*
+    li태그의 기본 블릿을 제거한다.
+    overflow의 속성
+        visible : 컨텐츠가 박스를 넘어가도 보이게 처리
+        hidden : 박스를 벗어난 부분은 숨김처리
+        scroll : 컨텐츠의 크기와 상관없이 스크롤바 생김
+        auto : 컨텐츠의 크기에 따라 스크롤바가 토글됨 
+    */
+    #nav ul{
+        list-style: none;
+        overflow:hidden;
+    }
+
+    #nav ul li{
+        font-size: 1.5em; font-weight: bold; height:50px;
+        width:20%; float:left; border:1px solid blue;
+        text-align: center; line-height: 50px;
+        /* 전체넓이에 패딩과 보더를 포함하여 지정한다. */
+        box-sizing: border-box;
+    }
+    #ContentWrap #content > h2{
+        border-bottom:1px #808080 solid;
+        font-size: 2em;
+    }
+    #content{
+        padding:20px;
+    }
+    #footer{
+        font-size: 2em; font-weight: bold; height:100px;
+        line-height: 100px; text-align: center;
+        border:1px solid blue;
+    }
+
+    /*
+        반응형웹을 구현하기 위해 미디어쿼리를 사용한다.
+        디바이스(단말기)의 해상도에 따라 다른 형태의 화면을
+        보여주게 된다. 이경우 모바일용 웹화면을 별도로 제작하지
+        않아도 되므로 편리하다.
+    */
+    /* 스크린의 크기가 640이하일때의 화면설정 */
+    @media screen and (max-width:640px){
+        #AllWrap{width:100%;}
+        #content p{
+            font-size: 2em; color:black;
+        }
+    }
+
+    /* 1000 이상일때의 설정 */
+    @media screen and (min-width:1000px){
+        #AllWrap{width:80%;}
+        #content p{
+            font-size: 1em; color:green;
+        }
+    }
+    /* 스크린의 크기가 641-999일때 설정 */
+    @media screen and (min-width:641px) and (max-width:999px){
+        #AllWrap{width:100%;}
+        #content p{
+            font-size: 1.5em; color:red;
+            background-color: black;
+        }
+    }
+</style>
+</head>
+<body>
+    <div id="AllWrap">
+        <div id="PartWrap">
+            <div id="header">
+                <h1>HEADER</h1>
+            </div>
+            <div id="nav">
+                    <ul>
+                        <li>메뉴1입니다</li>
+                        <li>메뉴2</li>
+                        <li>메뉴3</li>
+                        <li>메뉴4</li>
+                        <li>메뉴5</li>
+                    </ul>    
+            </div>
+        </div>
+        <div id="ContentWrap">
+            <div id="content">
+                <h2>애플, 자체칩 ‘M1’ 탑재 신형 ‘맥’ 공개…CPU 3.5배·배터리 2배↑</h2>
+                <p>
+                    애플, 첫 독자칩 ‘M1’ 탑재한 맥 신제품 3종 공개
+                    CPU 3.5배·GPU 5배 빨라…배터리 성능 2배·18시간 사용가능
+                    맥미니 699달러·맥북에어 999달러·맥북프로 1299달러
+                </p>
+            </div>
+        </div>
+        <div id="footer">
+            <h1>FOOTER</h1>
+        </div>
+    </div>        
+
+</body>
+</html>
