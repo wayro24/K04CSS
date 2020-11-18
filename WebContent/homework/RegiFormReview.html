@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegiFormReview.html</title>
+    <!-- 
+        구글웹폰트: https://fonts.google.com/
+        jQuery UI : https://jquery.com/
+    -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cute+Font&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cute+Font&family=Nanum+Brush+Script&display=swap');
+        *{
+            /*font-family: 'Nanum Brush Script', cursive;*/
+            font-family: 'Noto Sans KR', sans-serif;/* 문서의 기본폰트 설정*/
+            margin:0 auto;/* 문서 전체의 가운데 정렬*/
+        }
+        .AllWrap{ padding:50px;}
+        .wrap_regiform{ border: 1px solid red; width:720px; padding:5px 10px;}
+        .wrap_regiform table{
+            border-top: 3px solid black;
+            border-left: 1px solid silver;
+            border-right: 1px solid silver;
+            border-bottom: 1px solid silver;
+            width:100%;
+        }
+        /* 버튼의 기본색깔과 오버시 효과 */
+        .wrap_regiform table tr td:nth-child(2) button{
+            background-color:#333333; font-size: 1em; width:100px;
+            padding: 5px; color:#ffffff; border:2px solid #333333;
+        }
+        .wrap_regiform table tr td:nth-child(2) button:hover{
+            cursor: pointer; background-color: #727272;
+        }
+        .wrap_regiform table tr td:nth-child(2) img.pick{
+            position: relative;
+            top:12px; left: -6px;
+            height: 37px;
+        }
+        .wrap_regiform table tr td input{padding: 8px; border: 1px solid #cccccc;}
+        .w01{width:320px;}
+        .w02{width:200px;}
+        .w03{width:100px;}
+        .w04{width:230px;}
+    </style>
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+    function zipcodeFind(){
+        new daum.Postcode({
+            oncomplete: function(data) {
+                //Daum 우편번호 API가 전달해주는 값을 콘솔에 출력
+                console.log(data.zonecode);
+                console.log(data.address);
+                console.log(data.sido);
+                console.log(data.sigungu);
+                //가입폼에 적용하기
+                var f= document.regiform;
+                f.zipcode.value=data.zonecode;
+                f.address1.value = data.address;
+                f.address2.focus();
+            }
+        }).open();
+    }    
+    </script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            //라디오를 버튼모양으로 바꿔주는 jQuery UI
+            $( "input[type=radio]" ).checkboxradio({
+                icon: false
+            });
+            //날짜선택을 편리하게 - Date Picker
+            $( "#birthday" ).datepicker({
+                dateFormat:"yy-mm-dd"
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="AllWrap">
+        <h2>회원가입폼</h2>
+        일반텍스트
+        <div class="wrap_regiform">
+            <form name="regiform">
+                <table class = "regi_table">
+                    <colgroup>
+                        <col width="180px">
+                        <col width="">
+                    </colgroup>
+                    <tr>
+                        <td><span class="red">*</span> 아이디</td>
+                        <td>
+                            <input type="text" class="w01" name="userid" value="" />       
+                            <button type="button" onclick="">중복확인</button>             
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="red">*</span> 주소</td>
+                        <td>
+                            <input type="text" class="w03" name="zipcode" value="" />
+                            <button type="button" onclick="zipcodeFind()" style="width:150px">우편번호찾기</button> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <!-- 기본주소 : address1 -->
+                            <input type="text" class="w04" name="address1" value="" />                
+                            <!-- 상세주소 : address2 -->
+                            <input type="text" class="w04" name="address2" value="" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="red">*</span> 이름</td>
+                        <td>
+                            <input type="text" class="w01" name="name" value="" />        
+                            <label for="radio-1">남</label>
+                            <input type="radio" name="gender" id="radio-1">
+                            <label for="radio-2">여</label>
+                            <input type="radio" name="gender" id="radio-2">                    
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="red">*</span> 생년월일</td>
+                        <td style="padding: 0px 0 5px 5px;">
+                            <input type="text" class="w02" name="birthday" id="birthday" value="" />
+                            <img src="../images/pick.jpg" alt="" class="pick" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
